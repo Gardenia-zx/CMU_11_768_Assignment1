@@ -1,0 +1,2 @@
+# Preserve generated patches, including required blank context-line markers.
+reports/patches/*.patch -text whitespace=-blank-at-eol
