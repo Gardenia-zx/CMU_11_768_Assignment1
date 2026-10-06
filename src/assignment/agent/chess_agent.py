@@ -32,6 +32,7 @@ from assignment.prompts import (
     PROGRAMMATIC_CHESS_PROMPT,
 )
 from assignment.env import Environment
+from rich.json import JSON
 
 
 def format_chess_state(
@@ -107,8 +108,9 @@ class ChessAgent(Agent):
         )
 
         # TODO(Part 3): Register the play_move tool schema from tools.py.
-
+        self.tools.append(PLAY_MOVE_TOOL)
         if programmatic_tools:
+            self.tools.append(SIMULATE_MOVE_TOOL)
             self.tools.append(RUN_PYTHON_TOOL)
 
         # run_python always executes in the sandbox, on the port the chess
@@ -143,11 +145,19 @@ class ChessAgent(Agent):
                 "skill's name to load its instructions, and follow them in place "
                 f"of your default approach.\n\n<skills>\n{catalog}\n</skills>\n"
             )
-        opening_instruction = (
-            "Choose one move from legal_moves and call play_move."
-            if include_legal_moves
-            else "Infer a legal move from the board and FEN, then call play_move."
-        )
+        if programmatic_tools:
+            opening_instruction = (
+                "Load the select-move-v2 skill using invoke_skill and follow it. "
+                "Use run_python to choose and commit one White move. "
+                "Call the Python helper play_move(best) exactly once "
+                "as the final statement of the snippet."
+            )
+        else:
+            opening_instruction = (
+                "Choose one move from legal_moves and call play_move."
+                if include_legal_moves
+                else "Infer a legal move from the board and FEN, then call play_move."
+            )
         self.task_prompt = (
             f"Play this game as White. {opening_instruction}\n\n"
             f"{self.format_state(initial_state)}"
@@ -174,7 +184,69 @@ class ChessAgent(Agent):
         # 4. Link every observation to its call with tool_call_id.
         # 5. Turn malformed, unknown, rejected, or extra parallel calls into
         #    recoverable <chess_error> observations instead of crashing.
-
+        observation = []
+        move_attempted = False
+        for tool_call in tool_calls:
+            tool_call_id = tool_call.get("id")
+            function = tool_call.get("function")
+            result:str
+            if not isinstance(function, dict):
+                result = "<chess_error>Invalid tool call: missing function object.</chess_error>"
+            else:
+                function_name = function.get("name")
+                function_arguments = function.get("arguments")
+                try:
+                    if function_name == "play_move":
+                        if move_attempted:
+                            result = (
+                                "<chess_error>Only one play_move or run_python call is allowed per assistant response. "
+                                "Choose your next move after observing the previous result.</chess_error>"
+                            )
+                        else:
+                            move_attempted = True
+                            result = _play_move(self.chess_client, function_arguments)
+                            if not result.startswith("<chess_error>"):
+                                state = json.loads(result)
+                                result = self.format_state(state)
+                                self.last_state = state
+                                self.finished = bool(state.get("game_over", False))
+                    elif function_name == "simulate_move" and SIMULATE_MOVE_TOOL in self.tools:
+                        result = _simulate_move(self.chess_client, function_arguments)
+                    elif function_name == "run_python" and RUN_PYTHON_TOOL in self.tools:
+                        if move_attempted:
+                            result = (
+                                "<chess_error>Only one play_move or run_python call is allowed per assistant response. "
+                                "Choose your next move after observing the previous result.</chess_error>"
+                            )
+                        else:
+                            move_attempted = True
+                            result = _run_python(
+                                self.env,
+                                self.python_sandbox_port,
+                                function_arguments,
+                            )
+                            try:
+                                state = _game_state(self.chess_client, reset=False)
+                                self.last_state = state
+                                self.finished = bool(state.get("game_over", False))
+                                result += "\n\n" + self.format_state(state)
+                            except Exception as e:
+                                result += (
+                                    "\n\n<chess_error>"
+                                    f"Failed to refresh live game state: {e}"
+                                    "</chess_error>"
+                                )
+                    elif function_name == "invoke_skill" and INVOKE_SKILL_TOOL in self.tools:
+                        result = _invoke_skill(self.skills, function_arguments)
+                    else:
+                        result = f"<chess_error>Invalid tool call: invalid function name: {function_name}</chess_error>"
+                except Exception as e:
+                    result = f"<chess_error>{e}</chess_error>"
+            observation.append({
+                "role": "tool",
+                "tool_call_id": tool_call_id,
+                "content": result,
+            })
+        return observation
         # TODO(Part 3.3-4): add cases for simulate_move and run_python, with
         # linked observations and recoverable errors, just like the old tool.
-        raise NotImplementedError

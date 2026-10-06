@@ -133,10 +133,98 @@ INVOKE_SKILL_TOOL = {
 # TODO(3.1.a): Define an OpenAI function-tool schema named ``play_move``.
 # It must accept exactly one required string argument named ``move``, explain
 # that moves use UCI notation (for example e2e4), and reject extra arguments.
-PLAY_MOVE_TOOL: dict = {}
+PLAY_MOVE_TOOL: dict = {
+    "type":"function",
+    "function": {
+        "name": "play_move",
+        "description": (
+            "Play one legal move as White in the current live chess game. "
+            "Use UCI notation, such as e2e4 or e7e8q for pawn promotion. "
+            "The server automatically plays Black's reply and returns the updated game state. "
+            "Call this tool at most once per assistant response."
+        ),
+        "strict": True,
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "move":{
+                    "type": "string",
+                    "description": (
+                        "The move in UCI notation: the starting square followed by the "
+                        "destination square, for example e2e4. "
+                        "For pawn promotion, append q, r, b, or n, for example e7e8q."
+                    ),
+                },
+            },
+            "required": ["move"],
+            "additionalProperties": False,
+        },
+    },
+}
 
 # TODO(3.3): Define the `simulate_move` tool, like the `play_move` tool.
-SIMULATE_MOVE_TOOL: dict = {}
+SIMULATE_MOVE_TOOL: dict = {
+    "type": "function",
+    "function": {
+        "name": "simulate_move",
+        "description": (
+            "Inspect a chess position or simulate one legal move without changing "
+            "the live game. Provide a complete six-field FEN. "
+            "Omit move or pass null to inspect the position and its legal moves. "
+            "Provide a UCI move to simulate exactly one ply for the side to move. "
+            "No automatic opponent reply is played."
+        ),
+        "strict": False,
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "move":{
+                    "type": ["string","null"],
+                    "description": (
+                        "An optional move in UCI notation, such as e2e4 or e7e8q. "
+                        "Omit it or pass null to inspect the position without applying a move."
+                    ),
+                },
+                "fen":{
+                    "type": "string",
+                    "description": "The complete six-field FEN describing the position to inspect or simulate.",
+                },
+            },
+            "required": ["fen"],
+            "additionalProperties": False,
+        },
+    },
+}
 
 # TODO()
-RUN_PYTHON_TOOL: dict = {}
+RUN_PYTHON_TOOL: dict = {
+    "type":"function",
+    "function": {
+        "name": "run_python",
+        "description": (
+            "Run Python code inside the chess sandbox to inspect positions, "
+            "simulate candidate moves, and select a move. "
+            "Use simulate_move for planning without changing the live game. "
+            "Call play_move at most once to commit a move; "
+            "the server automatically plays Black's reply. "
+            "Returns captured stdout, stderr, and any Python exception."
+        ),
+        "strict": True,
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "code":{
+                    "type": "string",
+                    "description": (
+                        "Python source code to execute in the chess sandbox. "
+                        "Use print() to display results. "
+                        "The synchronous functions simulate_move(fen, move=None) "
+                        "and play_move(move) are available."
+                    ),
+                },
+            },
+            "required": ["code"],
+            "additionalProperties": False,
+        },
+    },
+}

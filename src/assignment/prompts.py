@@ -30,11 +30,23 @@ active, make a tool call instead of merely describing a move in text."""
 )
 """Ablation prompt used when legal moves are omitted from observations."""
 
-PROGRAMMATIC_CHESS_PROMPT = """Two additional tools are available: simulate_move and run_python.
-You may use Python to explore hypothetical positions before choosing a move.
-simulate_move(fen, move=None) returns a dict with FEN, squares, turn, legal_moves,
-and terminal status. simulate_move does not change the state of the board but allows for simulating
-the effects of taking an action on the board. Write Python code that uses simulate move to search
-for a good move to play at this state. You can write more complex search procedures with lookahead
-and complex logic to choose the move. Once you have chosen a move, write a call to play_move at
-the end of the Python code snippet to actually play that move."""
+PROGRAMMATIC_CHESS_PROMPT = """You are in programmatic chess mode.
+These instructions govern how moves are submitted in this mode.
+
+Use run_python to choose and commit each White move.
+All instructions to use play_move refer to the Python helper inside run_python.
+Do not submit moves through the standalone play_move tool.
+
+The synchronous functions simulate_move(fen, move=None) and play_move(move)
+are already available inside the Python snippet.
+simulate_move returns a hypothetical position without changing the live board.
+Use it to search and evaluate candidate moves.
+
+If a strategy skill is available, load it first and follow its instructions.
+Keep its opening preferences, search depth, evaluation, and tie-breaking rules.
+An opening shortcut may skip the search but still commits inside run_python.
+
+For each move, call play_move(best) exactly once, as the final statement of
+the snippet. Printing the chosen move does not commit it.
+After execution, inspect the returned updated board before choosing another move.
+"""
