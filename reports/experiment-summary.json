@@ -1,0 +1,885 @@
+{
+  "methodology": {
+    "sample_size": "One saved run per condition; observational comparisons",
+    "cache_rate": "sum(cached input tokens) / sum(input tokens)",
+    "reasoning": "Included in output tokens; never add twice",
+    "time": "First/last response-created timestamps; not complete runtime",
+    "observations": "Deduplicated by tool_call_id; the final tool return may be absent",
+    "part2_evaluation": "Previously reported passing by the user; separate evaluation logs unavailable",
+    "part3_v2": "Nonterminal saved state; not a draw or a completed loss"
+  },
+  "runs": {
+    "part1": {
+      "source": {
+        "file": "part1-trajectory.json",
+        "sha256": "34cc6183dff183e78935e86604afa9d19f6f574e9ca1e464849ee1d3b00a1f14"
+      },
+      "models": [
+        "deepseek-flash"
+      ],
+      "first_response_shanghai": "2026-09-30T13:47:45+08:00",
+      "last_response_shanghai": "2026-09-30T13:48:10+08:00",
+      "response_created_span_seconds": 25,
+      "action": {
+        "input": 135977,
+        "output": 2462,
+        "total": 138439,
+        "cached": 121728,
+        "miss": 14249,
+        "reasoning": 492,
+        "requests": 14,
+        "cache_rate": 0.8952102193753355,
+        "mean_input": 9712.642857142857,
+        "peak_input": 15215
+      },
+      "summary": {
+        "input": 0,
+        "output": 0,
+        "total": 0,
+        "cached": 0,
+        "miss": 0,
+        "reasoning": 0,
+        "requests": 0,
+        "cache_rate": null,
+        "mean_input": null,
+        "peak_input": null
+      },
+      "total": {
+        "input": 135977,
+        "output": 2462,
+        "total": 138439,
+        "cached": 121728,
+        "miss": 14249,
+        "reasoning": 492,
+        "requests": 14,
+        "cache_rate": 0.8952102193753355,
+        "mean_input": 9712.642857142857,
+        "peak_input": 15215
+      },
+      "tool_calls": {
+        "execute": 12,
+        "invoke_skill": 1,
+        "send_message": 1
+      },
+      "finish_reasons": {
+        "tool_calls": 14
+      },
+      "observed_tool_returns": 13,
+      "observed_chess_error_returns": 0,
+      "compaction_events": [],
+      "after_compaction": {
+        "input": 0,
+        "output": 0,
+        "total": 0,
+        "cached": 0,
+        "miss": 0,
+        "reasoning": 0,
+        "requests": 0,
+        "cache_rate": null,
+        "mean_input": null,
+        "peak_input": null
+      },
+      "other_actions": {
+        "input": 135977,
+        "output": 2462,
+        "total": 138439,
+        "cached": 121728,
+        "miss": 14249,
+        "reasoning": 492,
+        "requests": 14,
+        "cache_rate": 0.8952102193753355,
+        "mean_input": 9712.642857142857,
+        "peak_input": 15215
+      },
+      "max_output": 482,
+      "repair_evidence": {
+        "before_http_status": 500,
+        "after_http_status": 200,
+        "sandbox_tests_passed": 11,
+        "warnings": 1,
+        "scope": "Saved in-agent sandbox output; separate check-part1 log unavailable"
+      }
+    },
+    "part2_baseline": {
+      "source": {
+        "file": "django__django-15368-baseline-trajectory.json",
+        "sha256": "0812e4e1cc16abe39df681889bf830eda498294edf7bf5c8de3edd500d5a96fb"
+      },
+      "models": [
+        "deepseek-flash"
+      ],
+      "first_response_shanghai": "2026-10-02T12:40:34+08:00",
+      "last_response_shanghai": "2026-10-02T12:42:26+08:00",
+      "response_created_span_seconds": 112,
+      "action": {
+        "input": 554810,
+        "output": 8683,
+        "total": 563493,
+        "cached": 532352,
+        "miss": 22458,
+        "reasoning": 4578,
+        "requests": 30,
+        "cache_rate": 0.9595212775544781,
+        "mean_input": 18493.666666666668,
+        "peak_input": 29683
+      },
+      "summary": {
+        "input": 0,
+        "output": 0,
+        "total": 0,
+        "cached": 0,
+        "miss": 0,
+        "reasoning": 0,
+        "requests": 0,
+        "cache_rate": null,
+        "mean_input": null,
+        "peak_input": null
+      },
+      "total": {
+        "input": 554810,
+        "output": 8683,
+        "total": 563493,
+        "cached": 532352,
+        "miss": 22458,
+        "reasoning": 4578,
+        "requests": 30,
+        "cache_rate": 0.9595212775544781,
+        "mean_input": 18493.666666666668,
+        "peak_input": 29683
+      },
+      "tool_calls": {
+        "execute": 42,
+        "invoke_skill": 1,
+        "send_message": 1
+      },
+      "finish_reasons": {
+        "tool_calls": 30
+      },
+      "observed_tool_returns": 43,
+      "observed_chess_error_returns": 0,
+      "compaction_events": [],
+      "after_compaction": {
+        "input": 0,
+        "output": 0,
+        "total": 0,
+        "cached": 0,
+        "miss": 0,
+        "reasoning": 0,
+        "requests": 0,
+        "cache_rate": null,
+        "mean_input": null,
+        "peak_input": null
+      },
+      "other_actions": {
+        "input": 554810,
+        "output": 8683,
+        "total": 563493,
+        "cached": 532352,
+        "miss": 22458,
+        "reasoning": 4578,
+        "requests": 30,
+        "cache_rate": 0.9595212775544781,
+        "mean_input": 18493.666666666668,
+        "peak_input": 29683
+      },
+      "max_output": 1190
+    },
+    "part2_compact": {
+      "source": {
+        "file": "django__django-15368-trajectory.json",
+        "sha256": "8e28d426e09f98252748c4a4ecc29fa8411fc7812a7e0e8ea2bc15c5e22f0e61"
+      },
+      "models": [
+        "deepseek-flash"
+      ],
+      "first_response_shanghai": "2026-10-02T12:28:37+08:00",
+      "last_response_shanghai": "2026-10-02T12:34:08+08:00",
+      "response_created_span_seconds": 331,
+      "action": {
+        "input": 278153,
+        "output": 23116,
+        "total": 301269,
+        "cached": 181760,
+        "miss": 96393,
+        "reasoning": 16596,
+        "requests": 65,
+        "cache_rate": 0.6534533152617444,
+        "mean_input": 4279.276923076923,
+        "peak_input": 8934
+      },
+      "summary": {
+        "input": 93868,
+        "output": 23823,
+        "total": 117691,
+        "cached": 9216,
+        "miss": 84652,
+        "reasoning": 19976,
+        "requests": 26,
+        "cache_rate": 0.09818042357352878,
+        "mean_input": 3610.3076923076924,
+        "peak_input": 7923
+      },
+      "total": {
+        "input": 372021,
+        "output": 46939,
+        "total": 418960,
+        "cached": 190976,
+        "miss": 181045,
+        "reasoning": 36572,
+        "requests": 91,
+        "cache_rate": 0.513347364799299,
+        "mean_input": 4088.1428571428573,
+        "peak_input": 8934
+      },
+      "tool_calls": {
+        "execute": 89,
+        "invoke_skill": 1,
+        "send_message": 1
+      },
+      "finish_reasons": {
+        "tool_calls": 65
+      },
+      "observed_tool_returns": 90,
+      "observed_chess_error_returns": 0,
+      "compaction_events": [
+        {
+          "completed_action": 3,
+          "rough_before": 5762,
+          "rough_after": 3019
+        },
+        {
+          "completed_action": 4,
+          "rough_before": 11363,
+          "rough_after": 8995
+        },
+        {
+          "completed_action": 5,
+          "rough_before": 10061,
+          "rough_after": 1742
+        },
+        {
+          "completed_action": 11,
+          "rough_before": 5800,
+          "rough_after": 1256
+        },
+        {
+          "completed_action": 15,
+          "rough_before": 5426,
+          "rough_after": 2308
+        },
+        {
+          "completed_action": 18,
+          "rough_before": 6448,
+          "rough_after": 2378
+        },
+        {
+          "completed_action": 20,
+          "rough_before": 7679,
+          "rough_after": 3392
+        },
+        {
+          "completed_action": 23,
+          "rough_before": 6225,
+          "rough_after": 2378
+        },
+        {
+          "completed_action": 25,
+          "rough_before": 7662,
+          "rough_after": 4159
+        },
+        {
+          "completed_action": 26,
+          "rough_before": 6661,
+          "rough_after": 3152
+        },
+        {
+          "completed_action": 29,
+          "rough_before": 6779,
+          "rough_after": 2511
+        },
+        {
+          "completed_action": 30,
+          "rough_before": 7508,
+          "rough_after": 5691
+        },
+        {
+          "completed_action": 31,
+          "rough_before": 7167,
+          "rough_after": 2676
+        },
+        {
+          "completed_action": 32,
+          "rough_before": 9459,
+          "rough_after": 7456
+        },
+        {
+          "completed_action": 33,
+          "rough_before": 10238,
+          "rough_after": 3446
+        },
+        {
+          "completed_action": 34,
+          "rough_before": 5485,
+          "rough_after": 2701
+        },
+        {
+          "completed_action": 36,
+          "rough_before": 5867,
+          "rough_after": 1633
+        },
+        {
+          "completed_action": 40,
+          "rough_before": 5549,
+          "rough_after": 1435
+        },
+        {
+          "completed_action": 43,
+          "rough_before": 5511,
+          "rough_after": 1780
+        },
+        {
+          "completed_action": 47,
+          "rough_before": 5740,
+          "rough_after": 1539
+        },
+        {
+          "completed_action": 49,
+          "rough_before": 5907,
+          "rough_after": 2495
+        },
+        {
+          "completed_action": 51,
+          "rough_before": 5310,
+          "rough_after": 2014
+        },
+        {
+          "completed_action": 55,
+          "rough_before": 6698,
+          "rough_after": 2395
+        },
+        {
+          "completed_action": 57,
+          "rough_before": 5569,
+          "rough_after": 2184
+        },
+        {
+          "completed_action": 58,
+          "rough_before": 5030,
+          "rough_after": 3466
+        },
+        {
+          "completed_action": 61,
+          "rough_before": 5715,
+          "rough_after": 1396
+        }
+      ],
+      "after_compaction": {
+        "input": 99352,
+        "output": 9892,
+        "total": 109244,
+        "cached": 36608,
+        "miss": 62744,
+        "reasoning": 7056,
+        "requests": 26,
+        "cache_rate": 0.36846767050487156,
+        "mean_input": 3821.230769230769,
+        "peak_input": 8934
+      },
+      "other_actions": {
+        "input": 178801,
+        "output": 13224,
+        "total": 192025,
+        "cached": 145152,
+        "miss": 33649,
+        "reasoning": 9540,
+        "requests": 39,
+        "cache_rate": 0.8118075402262851,
+        "mean_input": 4584.641025641025,
+        "peak_input": 5889
+      },
+      "max_output": 1697,
+      "rough_compaction_reduction": {
+        "mean": 0.5741929013008349,
+        "median": 0.6193537993783043,
+        "min": 0.2083956701575288,
+        "max": 0.826856177318358
+      }
+    },
+    "part3_no_legal": {
+      "source": {
+        "file": "part3-no-legal-moves-deepseek.json",
+        "sha256": "34fa7fa54523620001fe950b796744ced4ef3cf004296804909fa9e7d9e14215"
+      },
+      "models": [
+        "deepseek-flash"
+      ],
+      "first_response_shanghai": "2026-10-05T11:14:47+08:00",
+      "last_response_shanghai": "2026-10-05T11:47:44+08:00",
+      "response_created_span_seconds": 1977,
+      "action": {
+        "input": 20976711,
+        "output": 440249,
+        "total": 21416960,
+        "cached": 20945408,
+        "miss": 31303,
+        "reasoning": 435579,
+        "requests": 76,
+        "cache_rate": 0.9985077260205377,
+        "mean_input": 276009.3552631579,
+        "peak_input": 460587
+      },
+      "summary": {
+        "input": 0,
+        "output": 0,
+        "total": 0,
+        "cached": 0,
+        "miss": 0,
+        "reasoning": 0,
+        "requests": 0,
+        "cache_rate": null,
+        "mean_input": null,
+        "peak_input": null
+      },
+      "total": {
+        "input": 20976711,
+        "output": 440249,
+        "total": 21416960,
+        "cached": 20945408,
+        "miss": 31303,
+        "reasoning": 435579,
+        "requests": 76,
+        "cache_rate": 0.9985077260205377,
+        "mean_input": 276009.3552631579,
+        "peak_input": 460587
+      },
+      "tool_calls": {
+        "play_move": 76
+      },
+      "finish_reasons": {
+        "tool_calls": 76
+      },
+      "observed_tool_returns": 75,
+      "observed_chess_error_returns": 0,
+      "compaction_events": [],
+      "after_compaction": {
+        "input": 0,
+        "output": 0,
+        "total": 0,
+        "cached": 0,
+        "miss": 0,
+        "reasoning": 0,
+        "requests": 0,
+        "cache_rate": null,
+        "mean_input": null,
+        "peak_input": null
+      },
+      "other_actions": {
+        "input": 20976711,
+        "output": 440249,
+        "total": 21416960,
+        "cached": 20945408,
+        "miss": 31303,
+        "reasoning": 435579,
+        "requests": 76,
+        "cache_rate": 0.9985077260205377,
+        "mean_input": 276009.3552631579,
+        "peak_input": 460587
+      },
+      "max_output": 27899,
+      "direct_moves_match_history": true,
+      "game": {
+        "source": {
+          "file": "part3-no-legal-moves-deepseek-result.json",
+          "sha256": "c602fd3caaf758e156e34caae4e33bb3d18fd006cde433e4148a6369ca4e314b"
+        },
+        "game_over": true,
+        "status": "White wins",
+        "plies": 151,
+        "white_moves": 76,
+        "last_white_san": "Qa3#",
+        "last_white_uci": "b4a3"
+      }
+    },
+    "part3_legal": {
+      "source": {
+        "file": "part3-legal-moves-deepseek.json",
+        "sha256": "7b4ec3ff0824dd9cc9610e41b643bd9838af42bba9e9503b05a28770d86d983d"
+      },
+      "models": [
+        "deepseek-flash"
+      ],
+      "first_response_shanghai": "2026-10-05T12:01:40+08:00",
+      "last_response_shanghai": "2026-10-05T12:25:39+08:00",
+      "response_created_span_seconds": 1439,
+      "action": {
+        "input": 4554563,
+        "output": 319786,
+        "total": 4874349,
+        "cached": 4484480,
+        "miss": 70083,
+        "reasoning": 317820,
+        "requests": 37,
+        "cache_rate": 0.9846125742469695,
+        "mean_input": 123096.2972972973,
+        "peak_input": 336160
+      },
+      "summary": {
+        "input": 0,
+        "output": 0,
+        "total": 0,
+        "cached": 0,
+        "miss": 0,
+        "reasoning": 0,
+        "requests": 0,
+        "cache_rate": null,
+        "mean_input": null,
+        "peak_input": null
+      },
+      "total": {
+        "input": 4554563,
+        "output": 319786,
+        "total": 4874349,
+        "cached": 4484480,
+        "miss": 70083,
+        "reasoning": 317820,
+        "requests": 37,
+        "cache_rate": 0.9846125742469695,
+        "mean_input": 123096.2972972973,
+        "peak_input": 336160
+      },
+      "tool_calls": {
+        "play_move": 36
+      },
+      "finish_reasons": {
+        "tool_calls": 36,
+        "length": 1
+      },
+      "observed_tool_returns": 35,
+      "observed_chess_error_returns": 0,
+      "compaction_events": [],
+      "after_compaction": {
+        "input": 0,
+        "output": 0,
+        "total": 0,
+        "cached": 0,
+        "miss": 0,
+        "reasoning": 0,
+        "requests": 0,
+        "cache_rate": null,
+        "mean_input": null,
+        "peak_input": null
+      },
+      "other_actions": {
+        "input": 4554563,
+        "output": 319786,
+        "total": 4874349,
+        "cached": 4484480,
+        "miss": 70083,
+        "reasoning": 317820,
+        "requests": 37,
+        "cache_rate": 0.9846125742469695,
+        "mean_input": 123096.2972972973,
+        "peak_input": 336160
+      },
+      "max_output": 65536,
+      "direct_moves_match_history": true,
+      "game": {
+        "source": {
+          "file": "part3-legal-moves-deepseek-result.json",
+          "sha256": "0b5d9c0e86aa88429c02b015416b966819a3f3573baf6c7e82683e7a63a664a2"
+        },
+        "game_over": true,
+        "status": "White wins",
+        "plies": 71,
+        "white_moves": 36,
+        "last_white_san": "Rh6#",
+        "last_white_uci": "e6h6"
+      }
+    },
+    "part3_original": {
+      "source": {
+        "file": "part3-trajectory.json",
+        "sha256": "74212de3f04ff57a19df6598333dbecec0ff7caf062d8b00ad41df146675ea70"
+      },
+      "models": [
+        "deepseek-flash"
+      ],
+      "first_response_shanghai": "2026-10-05T11:07:59+08:00",
+      "last_response_shanghai": "2026-10-05T11:09:17+08:00",
+      "response_created_span_seconds": 78,
+      "action": {
+        "input": 143781,
+        "output": 14212,
+        "total": 157993,
+        "cached": 132992,
+        "miss": 10789,
+        "reasoning": 8915,
+        "requests": 14,
+        "cache_rate": 0.924962269006336,
+        "mean_input": 10270.07142857143,
+        "peak_input": 22884
+      },
+      "summary": {
+        "input": 0,
+        "output": 0,
+        "total": 0,
+        "cached": 0,
+        "miss": 0,
+        "reasoning": 0,
+        "requests": 0,
+        "cache_rate": null,
+        "mean_input": null,
+        "peak_input": null
+      },
+      "total": {
+        "input": 143781,
+        "output": 14212,
+        "total": 157993,
+        "cached": 132992,
+        "miss": 10789,
+        "reasoning": 8915,
+        "requests": 14,
+        "cache_rate": 0.924962269006336,
+        "mean_input": 10270.07142857143,
+        "peak_input": 22884
+      },
+      "tool_calls": {
+        "invoke_skill": 1,
+        "run_python": 13
+      },
+      "finish_reasons": {
+        "tool_calls": 14
+      },
+      "observed_tool_returns": 13,
+      "observed_chess_error_returns": 1,
+      "compaction_events": [],
+      "after_compaction": {
+        "input": 0,
+        "output": 0,
+        "total": 0,
+        "cached": 0,
+        "miss": 0,
+        "reasoning": 0,
+        "requests": 0,
+        "cache_rate": null,
+        "mean_input": null,
+        "peak_input": null
+      },
+      "other_actions": {
+        "input": 143781,
+        "output": 14212,
+        "total": 157993,
+        "cached": 132992,
+        "miss": 10789,
+        "reasoning": 8915,
+        "requests": 14,
+        "cache_rate": 0.924962269006336,
+        "mean_input": 10270.07142857143,
+        "peak_input": 22884
+      },
+      "max_output": 3448,
+      "game": {
+        "source": {
+          "file": "game-result.json",
+          "sha256": "4e8994b4c32b128a203e4a3b969578a4e8f250c5433a9e2a110bfd94883187cd"
+        },
+        "game_over": true,
+        "status": "Draw",
+        "plies": 22,
+        "white_moves": 11,
+        "last_white_san": "Ra1",
+        "last_white_uci": "a2a1"
+      }
+    },
+    "part3_v2": {
+      "source": {
+        "file": "part3-v2-trajectory.json",
+        "sha256": "88d5e8e9d340a9a2c4257276ae45fa1c02a26ec64081f7e2aa4a7085b0cd605e"
+      },
+      "models": [
+        "deepseek-flash"
+      ],
+      "first_response_shanghai": "2026-10-05T20:37:29+08:00",
+      "last_response_shanghai": "2026-10-05T21:00:23+08:00",
+      "response_created_span_seconds": 1374,
+      "action": {
+        "input": 33159356,
+        "output": 193736,
+        "total": 33353092,
+        "cached": 33030528,
+        "miss": 128828,
+        "reasoning": 25156,
+        "requests": 200,
+        "cache_rate": 0.9961148823276302,
+        "mean_input": 165796.78,
+        "peak_input": 308379
+      },
+      "summary": {
+        "input": 0,
+        "output": 0,
+        "total": 0,
+        "cached": 0,
+        "miss": 0,
+        "reasoning": 0,
+        "requests": 0,
+        "cache_rate": null,
+        "mean_input": null,
+        "peak_input": null
+      },
+      "total": {
+        "input": 33159356,
+        "output": 193736,
+        "total": 33353092,
+        "cached": 33030528,
+        "miss": 128828,
+        "reasoning": 25156,
+        "requests": 200,
+        "cache_rate": 0.9961148823276302,
+        "mean_input": 165796.78,
+        "peak_input": 308379
+      },
+      "tool_calls": {
+        "invoke_skill": 1,
+        "run_python": 199
+      },
+      "finish_reasons": {
+        "tool_calls": 200
+      },
+      "observed_tool_returns": 199,
+      "observed_chess_error_returns": 0,
+      "compaction_events": [],
+      "after_compaction": {
+        "input": 0,
+        "output": 0,
+        "total": 0,
+        "cached": 0,
+        "miss": 0,
+        "reasoning": 0,
+        "requests": 0,
+        "cache_rate": null,
+        "mean_input": null,
+        "peak_input": null
+      },
+      "other_actions": {
+        "input": 33159356,
+        "output": 193736,
+        "total": 33353092,
+        "cached": 33030528,
+        "miss": 128828,
+        "reasoning": 25156,
+        "requests": 200,
+        "cache_rate": 0.9961148823276302,
+        "mean_input": 165796.78,
+        "peak_input": 308379
+      },
+      "max_output": 2576,
+      "game": {
+        "source": {
+          "file": "game-result-v2.json",
+          "sha256": "7fb62e0506e44a3a1d292256681fb31a8d60d7394a0b4ca625f1b184ccc09385"
+        },
+        "game_over": false,
+        "status": "Your turn",
+        "plies": 398,
+        "white_moves": 199,
+        "last_white_san": "Nb1",
+        "last_white_uci": "d2b1"
+      }
+    },
+    "part3_activity": {
+      "source": {
+        "file": "part3-v2-activity-trajectory.json",
+        "sha256": "22b0a0e50fa0876c0d5500c17a97eba9db76a8855bfee7d724685ef85557a63e"
+      },
+      "models": [
+        "deepseek-flash"
+      ],
+      "first_response_shanghai": "2026-10-05T22:41:37+08:00",
+      "last_response_shanghai": "2026-10-05T22:42:58+08:00",
+      "response_created_span_seconds": 81,
+      "action": {
+        "input": 299042,
+        "output": 19869,
+        "total": 318911,
+        "cached": 275328,
+        "miss": 23714,
+        "reasoning": 1680,
+        "requests": 14,
+        "cache_rate": 0.9207001023267635,
+        "mean_input": 21360.14285714286,
+        "peak_input": 42318
+      },
+      "summary": {
+        "input": 0,
+        "output": 0,
+        "total": 0,
+        "cached": 0,
+        "miss": 0,
+        "reasoning": 0,
+        "requests": 0,
+        "cache_rate": null,
+        "mean_input": null,
+        "peak_input": null
+      },
+      "total": {
+        "input": 299042,
+        "output": 19869,
+        "total": 318911,
+        "cached": 275328,
+        "miss": 23714,
+        "reasoning": 1680,
+        "requests": 14,
+        "cache_rate": 0.9207001023267635,
+        "mean_input": 21360.14285714286,
+        "peak_input": 42318
+      },
+      "tool_calls": {
+        "invoke_skill": 1,
+        "run_python": 13
+      },
+      "finish_reasons": {
+        "tool_calls": 14
+      },
+      "observed_tool_returns": 13,
+      "observed_chess_error_returns": 0,
+      "compaction_events": [],
+      "after_compaction": {
+        "input": 0,
+        "output": 0,
+        "total": 0,
+        "cached": 0,
+        "miss": 0,
+        "reasoning": 0,
+        "requests": 0,
+        "cache_rate": null,
+        "mean_input": null,
+        "peak_input": null
+      },
+      "other_actions": {
+        "input": 299042,
+        "output": 19869,
+        "total": 318911,
+        "cached": 275328,
+        "miss": 23714,
+        "reasoning": 1680,
+        "requests": 14,
+        "cache_rate": 0.9207001023267635,
+        "mean_input": 21360.14285714286,
+        "peak_input": 42318
+      },
+      "max_output": 1829,
+      "game": {
+        "source": {
+          "file": "game-result-v2-activity.json",
+          "sha256": "2f282a44cd73a8483496f7f967af532fa6cbcf9257ec3d495ea3a56377c0c55d"
+        },
+        "game_over": true,
+        "status": "White wins",
+        "plies": 23,
+        "white_moves": 12,
+        "last_white_san": "Ne4#",
+        "last_white_uci": "c3e4"
+      }
+    }
+  }
+}

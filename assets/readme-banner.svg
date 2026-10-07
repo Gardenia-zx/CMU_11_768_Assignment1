@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="460" viewBox="0 0 1600 460" role="img" aria-labelledby="title desc">
+  <title id="title">CMU 11-768 Assignment 1 — Build an Agent Harness</title>
+  <desc id="desc">Three parts: code repair, context compaction, and programmatic chess tools. Saved results: HTTP 500 to 200, Part 2 total tokens down 25.65%, final chess strategy checkmates in 12 White moves.</desc>
+  <defs>
+    <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#11213c"/><stop offset="1" stop-color="#233d65"/></linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#a6c3f3" stroke-opacity=".06"/></pattern>
+  </defs>
+  <rect width="1600" height="460" rx="24" fill="url(#bg)"/>
+  <rect width="1600" height="460" rx="24" fill="url(#grid)"/>
+  <circle cx="1500" cy="65" r="190" fill="#537ce7" opacity=".12"/>
+  <circle cx="1525" cy="400" r="160" fill="#15a99b" opacity=".12"/>
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <text x="64" y="66" fill="#a9c2ed" font-size="20" font-weight="600" letter-spacing="3">CMU 11-768 / AI AGENTS / ASSIGNMENT 01</text>
+    <text x="64" y="145" fill="#ffffff" font-size="62" font-weight="700">Build an Agent Harness</text>
+    <text x="68" y="192" fill="#b7c8e3" font-size="24">ReAct  ×  Context Compaction  ×  Programmatic Tool Calling</text>
+    <g transform="translate(64 246)">
+      <rect width="460" height="151" rx="16" fill="#ffffff" fill-opacity=".055" stroke="#6788ba" stroke-opacity=".35"/>
+      <rect x="22" y="24" width="6" height="26" rx="3" fill="#729bff"/>
+      <text x="44" y="43" fill="#b7c8e3" font-size="17" letter-spacing="1.5">01 / CODE REPAIR</text>
+      <text x="26" y="102" fill="#ffffff" font-size="40" font-weight="700">HTTP 500 → 200</text>
+      <text x="26" y="128" fill="#91a9ce" font-size="15">Terminal-move bug repaired</text>
+    </g>
+    <g transform="translate(570 246)">
+      <rect width="460" height="151" rx="16" fill="#ffffff" fill-opacity=".055" stroke="#6788ba" stroke-opacity=".35"/>
+      <rect x="22" y="24" width="6" height="26" rx="3" fill="#36d3c2"/>
+      <text x="44" y="43" fill="#b7c8e3" font-size="17" letter-spacing="1.5">02 / WORKING MEMORY</text>
+      <text x="26" y="102" fill="#ffffff" font-size="40" font-weight="700">25.65% fewer tokens</text>
+      <text x="26" y="128" fill="#91a9ce" font-size="15">Including all summaries · one run per setting</text>
+    </g>
+    <g transform="translate(1076 246)">
+      <rect width="460" height="151" rx="16" fill="#ffffff" fill-opacity=".055" stroke="#6788ba" stroke-opacity=".35"/>
+      <rect x="22" y="24" width="6" height="26" rx="3" fill="#edb569"/>
+      <text x="44" y="43" fill="#b7c8e3" font-size="17" letter-spacing="1.5">03 / CHESS TOOLS</text>
+      <text x="26" y="102" fill="#ffffff" font-size="40" font-weight="700">12 moves to mate</text>
+      <text x="26" y="128" fill="#91a9ce" font-size="15">Final activity strategy · one saved game</text>
+    </g>
+    <text x="64" y="433" fill="#7290ba" font-size="14">STUDENT IMPLEMENTATION &amp; EXPERIMENT REPORT / GARDENIA-ZX</text>
+  </g>
+</svg>
